@@ -1,0 +1,1 @@
+{"name":"Local: 1","url":"/home/dk/HackerCup/Round1/1.cpp","tests":[{"id":1696700607353,"input":"3\n7\n1 17 3 13 7 23 12\n5\n5 4 3 2 1\n4\n10 100 1000 10000","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/dk/HackerCup/Round1/1.cpp","group":"local","local":true}
