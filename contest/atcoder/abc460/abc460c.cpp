@@ -20,16 +20,42 @@ using namespace std;
 
 void solve(int& tc) {
 
+    int n , m ; 
+    cin >> n >> m ; 
 
+    vector<int> a(n), b(m); 
+    for(auto &x : a) cin >> x ; 
+    for(auto &x : b) cin >> x ; 
 
+    set<pair<int,int>> s ; 
+    for(int i = 0 ; i < m ; i++){
+        s.insert({b[i],i}) ;
+    }
+    int matched = 0; 
+    std::sort(std::begin(a),std::end(a)) ;
+
+    for(int& x : a){
+        if (empty(s)) break;
+
+        auto it = s.begin() ;
+        auto [ match, index ] = *it ;
+        debug(x , match, index) ;
+
+        if(match > 2 * x) continue;
+        s.erase(it) ; 
+        matched++ ; 
+    }
+
+    cout << matched << "\n" ;
 }
+
 
 signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
     int testCases = 1;
-    cin >> testCases;             // comment out for single-test problems
+    // cin >> testCases;             // comment out for single-test problems
     for (int tc = 1; tc <= testCases; tc++)
         solve(tc);
 
