@@ -45,29 +45,35 @@ void solve(int& tc) {
         return neighbours;
     };
 
-    int black_count = 0;
-
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
             char c;
             cin >> c;
             vec[i][j] = (c == '#');
+        }
+    }
+
+    auto vec_copy = vector<vector<bool>>(n, vector<bool>(m));
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
             if (vec[i][j] == true) {
-                q.push(Point{i, j, 0});
-                vis[i][j] = 0;
-                black_count++;
+                for (auto [nx, ny] : get_neighbours(i, j)) {
+                    if (vec[nx][ny] == false)
+                        vec_copy[nx][ny] = true;
+                }
             }
         }
     }
 
-    if (black_count == n * m) {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                cout << ".";
+    vec = move(vec_copy);
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (vec[i][j] == true) {
+                q.push(Point{i, j, 1});
+                vis[i][j] = 1;
             }
-            cout << "\n";
         }
-        return;
     }
 
     while (q.size()) {
