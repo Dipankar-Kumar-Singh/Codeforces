@@ -18,18 +18,52 @@ using namespace std;
     #define debug(...)
 #endif
 
+constexpr array<pair<int, int>, 8> dirs{{
+    {-1, -1}, {-1, 0}, {-1, 1}, // ↖ ↑ ↗
+    { 0, -1},           { 0, 1}, // ←   →
+    { 1, -1}, { 1, 0}, { 1, 1}  // ↙ ↓ ↘
+}};
+
+
+
 void solve(int& tc) {
     int n , m ; 
-    cin >> n >> m ; 
+    cin >> n >> m ;
 
-    vector<vector<bool>> vec(n,vector<bool>(m)) ;
-    for(auto &row : vec){
-        for(std::vector<bool>::reference item: row){
+    vector<vector<bool>> vec(n, vector<bool>(m));
+    vector<vector<int>> vis(n, vector<int>(m, -1));
+    queue<pair<int,int>> q ;
+
+    function get_neighbours = [&](int i, int j) -> vector<pair<int,int>> {
+        vector<pair<int,int>> neighbours = {}; 
+        neighbours.reserve(8);
+
+        for (const auto& [dx, dy] : dirs) {
+            neighbours.emplace_back(i + dx, j + dy);
+        }
+        return neighbours ; 
+    };
+
+
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m ; j++){
             char c ; cin >> c ; 
-            item = c == '#' ;
+            vec[i][j] = c == '#' ;
+            if(vec[i][j] == true) q.push({i,j});
         }
     }
 
+
+    while(q.size()){
+        auto [x,y] = q.front();
+        q.pop();
+
+        for (auto [nx, ny] : get_neighbours(x, y)) {
+            if(vis[nx][ny] != -1) continue ; 
+
+            if(vis[1] == )
+        }
+    }
 }
 
 signed main() {
@@ -37,7 +71,7 @@ signed main() {
     cin.tie(nullptr);
 
     int testCases = 1;
-    cin >> testCases;             // comment out for single-test problems
+    // cin >> testCases;             // comment out for single-test problems
     for (int tc = 1; tc <= testCases; tc++)
         solve(tc);
 
