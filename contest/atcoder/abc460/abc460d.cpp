@@ -19,8 +19,16 @@ using namespace std;
 #endif
 
 void solve(int& tc) {
+    int n , m ; 
+    cin >> n >> m ; 
 
-
+    vector<vector<bool>> vec(n,vector<bool>(m)) ;
+    for(auto &row : vec){
+        for(std::vector<bool>::reference item: row){
+            char c ; cin >> c ; 
+            item = c == '#' ;
+        }
+    }
 
 }
 
