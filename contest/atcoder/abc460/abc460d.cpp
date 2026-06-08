@@ -6,23 +6,18 @@
 using namespace std;
 
 #ifdef CPH
-#include "/Users/dk/personal/Codeforces/debugging.h"
-template <class T>
-void _dbg(T x) { cerr << x << endl; }
-template <class T, class... R>
-void _dbg(T x, R... r) { cerr << x << " | ", _dbg(r...); }
-#define debug(...) cerr << "[" << #__VA_ARGS__ << "] = ", _dbg(__VA_ARGS__)
+    #include "/Users/dk/personal/Codeforces/debugging.h"
+    template <class T> void _dbg(T x) { cerr << x << endl; }
+    template <class T, class... R> void _dbg(T x, R... r) { cerr << x << " | ", _dbg(r...); }
+    #define debug(...) cerr << "[" << #__VA_ARGS__ << "] = ", _dbg(__VA_ARGS__)
 #else
-#define debug(...)
+    #define debug(...)
 #endif
 
 constexpr array<pair<int, int>, 8> dirs{{
-    {-1, -1}, {-1, 0}, {-1, 1},  // ↖ ↑ ↗
-    {0, -1},
-    {0, 1},  // ←   →
-    {1, -1},
-    {1, 0},
-    {1, 1}  // ↙ ↓ ↘
+    {-1, -1}, {-1, 0}, {-1, 1}, // ↖ ↑ ↗
+    { 0, -1},           { 0, 1}, // ←   →
+    { 1, -1}, { 1, 0}, { 1, 1}  // ↙ ↓ ↘
 }};
 
 struct Point {
