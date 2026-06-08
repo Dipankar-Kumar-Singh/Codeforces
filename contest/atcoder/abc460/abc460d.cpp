@@ -45,16 +45,17 @@ void solve(int& tc) {
         return neighbours ; 
     };
 
-    int black_count = 0 ; 
+    int black_count = 0 ;
 
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < m ; j++){
-            char c ; cin >> c ; 
-            vec[i][j] = (c == '#') ;
-            if(vec[i][j] == true) {
-                q.push(Point{i,j,0});
-                vis[i][j] = 0; 
-                black_count++ ; 
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            char c;
+            cin >> c;
+            vec[i][j] = (c == '#');
+            if (vec[i][j] == true) {
+                q.push(Point{i, j, 0});
+                vis[i][j] = 0;
+                black_count++;
             }
         }
     }
